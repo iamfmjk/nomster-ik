@@ -40,3 +40,22 @@ h1, h2, h3, h4, h5, h6 {
   margin: 0;
   padding: 0;
 }
+
+.page-link {
+  color: #94205a;
+}
+
+.page-item:hover .page-link:hover {
+  color: #290819;
+  background-color: #c7b0bc;
+  border-color: #c7b0bc;
+}
+.page-item.active .page-link {
+  background-color: #94205a;
+  border-color: #94205a;
+}
+
+.btn-primary {
+  background-color: #94205a;
+  border-color: #94205a;
+}
