@@ -11,23 +11,28 @@
 
   <body>
     <nav class="navbar navbar-toggleable-md navbar-inverse bg-inverse">
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
-  <%= link_to 'Nomster', root_path, class: 'navbar-brand' %>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <%= link_to 'Nomster', root_path, class: 'navbar-brand' %>
 
+      <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+        <li class="nav-item">
+          <%= link_to new_places_path, class: 'nav-link'  do %>
+          <i class="fa fa-plus-circle"></i>
+          New Place
+          <% end %>
+        </li>
+      </ul>
   
-    <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
-      <li class="nav-item">
-        <%= link_to new_places_path, class: 'nav-link'  do %>
-        <i class="fa fa-plus-circle"></i>
-        New Place
-        <% end %>
-      </li>
-    </ul>
-  
-</nav>
+    </nav>
 
+    <% if notice.present? %>
+      <p class="alert alert-info"><%= notice %></p>
+    <% end %>
+    <% if alert.present? %>
+      <p class="alert alert-danger"><%= alert %></p>
+    <%end %>
 
     <%= yield %>
   </body>
