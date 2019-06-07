@@ -1,5 +1,7 @@
 @import "bootstrap";
-@import url('https://fonts.googleapis.com/css?family=Mali:400,500,700|Open+Sans:400,600,700&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Mali: 500|Open+Sans:400,600,700&display=swap');
+@import "font-awesome";
+
 
 body {
   background: image_url('blizzard.png');
@@ -23,7 +25,23 @@ body {
   color: #fff;
   font-family: 'Mali', cursive;
   font-weight: 500;
+  font-size: 1.5rem;
 }
+
+.navbar-brand:hover{
+  color: #fff;
+  text-decoration: bold;
+}
+
+.nav-link {
+  color: #fff;
+}
+
+.nav-link:hover {
+  color: #fff;
+  text-decoration: bold;
+}
+
 .booyah-box {
   -moz-box-shadow: 1px 1px 2px 0 #d0d0d0;
   -webkit-box-shadow: 1px 1px 2px 0 #d0d0d0;
