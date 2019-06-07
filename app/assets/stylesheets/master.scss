@@ -1,4 +1,5 @@
 @import "bootstrap";
+@import url('https://fonts.googleapis.com/css?family=Mali:400,500,700|Open+Sans:400,600,700&display=swap');
 
 body {
   background: image_url('blizzard.png');
@@ -11,8 +12,17 @@ body {
 }
 
 .navbar {
-  background: image_url('noisy_net.png');
-  box-shadow: 0px 1px 1px #2a2a2a;
+  background-color: #94205a;
+  box-shadow: 0px 1px 1px #801747;
+  font-family: 'Open Sans', sans-serif;
+  color: #fff;
+
+}
+
+.navbar-brand {
+  color: #fff;
+  font-family: 'Mali', cursive;
+  font-weight: 500;
 }
 .booyah-box {
   -moz-box-shadow: 1px 1px 2px 0 #d0d0d0;
@@ -20,7 +30,7 @@ body {
   box-shadow: 1px 1px 2px 0 #d0d0d0;
   background: #fff;
   border: 1px solid #ccc;
-  border-color: #e4e4e4 #bebebd e4e4e4 #bebebd;
+  border-color: #e4e4e4 #bebebd #e4e4e4 #bebebd;
   margin-top: 10px;
   margin-bottom: 15px;
   padding: 20px;
