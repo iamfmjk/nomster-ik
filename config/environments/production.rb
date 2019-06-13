@@ -19,7 +19,7 @@ Rails.application.configure do
   # config.require_master_key = true
 
   #auth related mailing
-  config.action_mailer.default_utl_options = {host: 'nomster-ik.herokuapp.com'}
+  config.action_mailer.default_url_options = {host: 'nomster-ik.herokuapp.com'}
 
   # Disable serving static files from the `/public` folder by default since
   # Apache or NGINX already handles this.
