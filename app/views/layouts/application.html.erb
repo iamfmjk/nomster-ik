@@ -9,35 +9,38 @@
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
-  <body>
-    <nav class="navbar navbar-toggleable-md navbar-inverse bg-inverse">
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
+  <body> 
+    <nav class="navbar navbar-expand-lg">
       <%= link_to 'Nomster', root_path, class: 'navbar-brand' %>
-
-      <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
-        <li class="nav-item">
-          <%= link_to new_places_path, class: 'nav-link'  do %>
-          <i class="fa fa-plus-circle"></i>
-          New Place
-          <% end %>
-        </li>
-      </ul>
-      <ul class="navbar-nav">
-        <% if user_signed_in? %>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span>
+          <i class="fa fa-navicon menu-toggle"></i>
+        </span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav mr-auto">
           <li class="nav-item">
-            <%= link_to 'Sign out', destroy_user_session_path, method: :delete, class: 'nav-link' %>
+            <%= link_to new_places_path, class: 'nav-link'  do %>
+            <i class="fa fa-plus-circle"></i>
+            New Place
+            <% end %>
           </li>
-          <% else %>
+        </ul>
+        <ul class="navbar-nav">
+          <% if user_signed_in? %>
             <li class="nav-item">
-              <%= link_to 'Sign in', new_user_session_path, class: 'nav-link' %>
+              <%= link_to 'Sign out', destroy_user_session_path, method: :delete, class: 'nav-link' %>
             </li>
-            <li class="nav-item">
-              <%= link_to 'Sign up', new_user_registration_path, class: 'nav-link' %>
-            </li>
-        <% end %>
-      </ul>
+            <% else %>
+              <li class="nav-item">
+                <%= link_to 'Sign in', new_user_session_path, class: 'nav-link' %>
+              </li>
+              <li class="nav-item">
+                <%= link_to 'Sign up', new_user_registration_path, class: 'nav-link' %>
+              </li>
+          <% end %>
+        </ul>
+      </div>
   
     </nav>
 
