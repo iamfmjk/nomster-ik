@@ -3,4 +3,7 @@
   <i><%= @place.address %></i>
   <br /><br />
   <p><%= @place.description %></p>
+  <div class="clearfix">
+    <%= link_to 'Edit', edit_place_path(@place), class: 'btn btn-primary float-right' %>
+  </div>
 </div>
