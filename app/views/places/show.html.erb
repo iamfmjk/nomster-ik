@@ -42,7 +42,7 @@
 </div>
 <div class="clear"></div>
 <div class="booyah-box col-10 offset-1">
-<%= simple_form_for @comment, url: '#' do |f| %>
+<%= simple_form_for @comment, url: place_comments_path(@place) do |f| %>
   <%= f.input :message %>
   <%= f.input :rating %>
   <%= f.submit "Add a Comment", class: 'btn btn-primary' %>
