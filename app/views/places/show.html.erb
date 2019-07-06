@@ -38,51 +38,53 @@
       <% end %>
     </div>
   </div> 
-<div class="clear"></div>
+</div>
+<div class="col-10 offset-1">
+  <h2 class="float-left">Comments</h2>
 
-<!-- Button trigger modal -->
-<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#commentsModal">
- Add a comment
-</button>
+  <!-- Button trigger modal -->
+  <button type="button" class="btn btn-primary float-right" data-toggle="modal" data-target="#commentsModal">
+   Add a comment
+  </button>
+  <div class="clear"></div>
 
-<!-- Modal -->
-<div class="modal fade" id="commentsModal" tabindex="-1" role="dialog" aria-labelledby="commentsModalLabel" aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Leave a comment</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
+  <!-- Modal -->
+  <div class="modal fade" id="commentsModal" tabindex="-1" role="dialog" aria-labelledby="commentsModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Leave a comment</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <%= simple_form_for @comment, url: place_comments_path(@place) do |f| %>
+            <%= f.input :message %>
+            <%= f.input :rating, as: :select, collection: Comment::RATINGS %> 
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          <%= f.submit "Add a Comment", class: 'btn btn-primary' %>
+        </div>
+        <% end %>
       </div>
-      <div class="modal-body">
-        <%= simple_form_for @comment, url: place_comments_path(@place) do |f| %>
-          <%= f.input :message %>
-          <%= f.input :rating, as: :select, collection: Comment::RATINGS %> 
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <%= f.submit "Add a Comment", class: 'btn btn-primary' %>
-      </div>
-      <% end %>
     </div>
   </div>
-</div>
 
-<br /> 
-<br />
-
-<h2>Comments</h2>
-
-<% @place.comments.each do |comment| %>
-  <div>
-    <blockquote>
-      <% if comment.humanized_rating.present? %>
-        <b><%= comment.humanized_rating %></b> - 
-      <% end %>
-      <%= comment.message %>
-      <small><%= comment.user.email %></small>
-    </blockquote>
+  <div class="row">
+    <% @place.comments.each do |comment| %>
+      <div class="col-12 col-sm-6">
+        <blockquote>
+          <% if comment.humanized_rating.present? %>
+              <b><%= comment.humanized_rating %></b>
+              <br />
+          <% end %>
+          <%= comment.message %>
+            <small><%= comment.user.email %></small>
+        </blockquote>
+      </div>
+    <% end %>
   </div>
-  <% end %>
 </div>
+
