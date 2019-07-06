@@ -66,8 +66,14 @@ h1, h2, h3, h4, h5, h6 {
   padding: 0;
 }
 
-.page-link {
+.page-link, h1 a {
   color: #94205a;
+}
+
+h1 a:hover {
+  color: #290819;
+  text-decoration: none;
+
 }
 
 .page-item:hover .page-link:hover {
