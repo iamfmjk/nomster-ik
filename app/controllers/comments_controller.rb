@@ -5,6 +5,8 @@ class CommentsController < ApplicationController
   def create
     @place = Place.find(params[:place_id])
     @place.comments.create(comment_params.merge(user: current_user))
+    puts @place.comments
+
 
   end
 
