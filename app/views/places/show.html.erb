@@ -39,6 +39,29 @@
     </div>
   </div> 
 </div>
+<div class="clear"></div>
+
+<!-- Photos -->
+<div class="col-10 offset-1 booyah-box">
+  <h2>Photos</h2>
+  <% @place.photos.each do |photo| %>
+    <%= image_tag(photo.picture.url) %>
+    <b><%= photo.caption %></b>
+  <% end %>
+</div>
+
+<div class="col-10 offset-1">
+  <h2>Add a Photo</h2>
+  <%= simple_form_for @photo, url: place_photos_path(@place) do |f| %>
+    <%= f.input :picture, as: :file %>
+    <%= f.input :caption %>
+    <%= f.submit 'Add photo', class: 'btn btn-primary' %>
+  <% end %>
+</div>
+<div class="clear"></div>
+
+<!-- Comments -->
+
 <div class="col-10 offset-1">
   <h2 class="float-left">Comments</h2>
 
@@ -46,6 +69,7 @@
   <button type="button" class="btn btn-primary float-right" data-toggle="modal" data-target="#commentsModal">
    Add a comment
   </button>
+
   <div class="clear"></div>
 
   <!-- Modal -->
@@ -86,5 +110,7 @@
       </div>
     <% end %>
   </div>
+  <br />
+  <br />
 </div>
 
