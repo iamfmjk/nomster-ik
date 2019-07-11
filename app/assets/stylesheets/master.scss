@@ -10,18 +10,18 @@ body {
 }
 
 .navbar {
-  background-color: #94205a;
+  background-color: #4e1232;
   box-shadow: 0px 1px 1px #801747;
   font-family: 'Open Sans', sans-serif;
-  color: #fff;
+  color: #f1e9ed;
 
 }
 
 .menu-toggle {
-  border:  2px solid #fff;
+  border:  2px solid #f1e9ed;
   padding: 6px 7px;
   border-radius: 20%;
-  color: #fff;
+  color: #f1e9ed;
 }
 
 .menu-toggle:hover {
@@ -29,7 +29,7 @@ body {
   color: #94205a;
 }
 .navbar-brand {
-  color: #fff;
+  color: #f1e9ed;
   font-family: 'Open Sans', sans-serif;
   font-weight: 500;
   font-size: 1.5rem;
@@ -41,7 +41,7 @@ body {
 }
 
 .nav-link {
-  color: #fff;
+  color: #f1e9ed;
 }
 
 .nav-link:hover {
@@ -71,13 +71,13 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 h1 a:hover {
-  color: #290819;
+  color: #4e1232;
   text-decoration: none;
 
 }
 
 .page-item:hover .page-link:hover {
-  color: #290819;
+  color: #4e1232;
   background-color: #c7b0bc;
   border-color: #c7b0bc;
 }
@@ -125,3 +125,5 @@ blockquote:before {
 blockquote p {
   display: inline;
 }
+
+
