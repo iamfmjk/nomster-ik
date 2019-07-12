@@ -30,54 +30,56 @@
   <% end %>
 
 <br />
-  <div class="clearfix">
-    <div class="float-right">
+  <div class="float-right">
       <% if current_user && current_user == @place.user %>
         <%= link_to 'Destroy', place_path(@place), method: :delete, data: {confirm: 'Are you sure you want to delete this?'}, class: 'btn btn-outline-danger' %>
         <%= link_to 'Edit', edit_place_path(@place), class: 'btn btn-primary' %>
         <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#photosModal">Add a photo</button> 
       <% end %>
+  </div>
 
 <!-- Add Photos modal -->
-  <div class="modal fade" id="photosModal" tabindex="-1" role="dialog" aria-labelledby="commentsModalLabel" aria-hidden="true">
-      <div class="modal-dialog" role="document">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title" id="commentsModalLabel">Leave a comment</h5>
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-              <span aria-hidden="true">&times;</span>
-            </button>
-          </div>
-          <div class="modal-body">
-            <h2>Add a Photo</h2>
-            <%= simple_form_for @photo, url: place_photos_path(@place) do |f| %>
-              <%= f.input :picture, as: :file %>
-              <%= f.input :caption %>
-          </div>
-          <div class="clear"></div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-            <%= f.submit 'Add photo', class: 'btn btn-primary' %>
-          </div>
-          <% end %>
+  <div class="modal fade" id="photosModal" tabindex="-1" role="dialog" aria-labelledby="photosModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="photosModalLabel">Leave a comment</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
         </div>
+        <div class="modal-body">
+          <h2>Add a Photo</h2>
+          <%= simple_form_for @photo, url: place_photos_path(@place) do |f| %>
+            <%= f.input :picture, as: :file %>
+            <%= f.input :caption %>
+        </div>
+      <div class="clear"></div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          <%= f.submit 'Add photo', class: 'btn btn-primary' %>
+        </div>
+          <% end %>
       </div>
     </div>
-
-      </div>
-    </div> 
   </div>
 <div class="clear"></div>
 
-<!-- Photos -->
-<div class="col-10 offset-1 booyah-box">
-  <h2>Photos</h2>
-  <% @place.photos.each do |photo| %>
-    <%= image_tag(photo.picture.url(:thumb)) %>
-    <b><%= photo.caption %></b>
-  <% end %>
-</div>
 
+
+<!-- Photos -->
+  <h2>Photos</h2>
+  <div class="row justify-content-center">    
+      <% @place.photos.each do |photo| %>
+        <div class="col-12 col-md-auto">      
+        <%= link_to photo.picture.url, class: 'img-fluid', data: {lightbox: "example-set", title: photo.caption} do %>
+          <%= image_tag(photo.picture.url(:thumb), class: 'img-fluid photo-thumb') %>
+          <% end %>
+          <div class="clear"></div>
+        </div>
+      <% end %>
+  </div>
+</div>
 
 <!-- Comments -->
 

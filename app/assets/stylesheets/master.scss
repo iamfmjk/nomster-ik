@@ -1,4 +1,5 @@
 @import "bootstrap";
+@import 'lightbox';
 @import url('https://fonts.googleapis.com/css?family=Open+Sans:400,600,700&display=swap');
 @import "font-awesome";
 
@@ -126,4 +127,6 @@ blockquote p {
   display: inline;
 }
 
-
+.photo-thumb {
+  margin-bottom: 1.5rem;
+}
