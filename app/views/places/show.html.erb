@@ -37,6 +37,8 @@
         <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#photosModal">Add a photo</button> 
       <% end %>
   </div>
+  <br />
+  <br />
 
 <!-- Add Photos modal -->
   <div class="modal fade" id="photosModal" tabindex="-1" role="dialog" aria-labelledby="photosModalLabel" aria-hidden="true">
@@ -65,15 +67,20 @@
   </div>
 <div class="clear"></div>
 
-
-
 <!-- Photos -->
   <h2>Photos</h2>
+  <br />
   <div class="row justify-content-center">    
       <% @place.photos.each do |photo| %>
-        <div class="col-12 col-md-auto">      
-        <%= link_to photo.picture.url, class: 'img-fluid', data: {lightbox: "example-set", title: photo.caption} do %>
-          <%= image_tag(photo.picture.url(:thumb), class: 'img-fluid photo-thumb') %>
+        <div class="col-12 col-md-auto photo-thumb">      
+        <%= link_to photo.picture.url, class: 'img-fluid', data: {lightbox: "photo-set", title: photo.caption} do %>
+
+          <%= image_tag(photo.picture.url(:thumb), class: 'img-fluid') %>
+            <% if current_user && current_user == @place.user %>
+          </br />
+              <%= link_to 'Delete photo', place_photo_path(@place, photo), class: 'delete-link', method: :delete, data: {confirm: 'Are you sure you want to delete this?'} %>
+              </br />
+            <% end %>
           <% end %>
           <div class="clear"></div>
         </div>
@@ -128,6 +135,12 @@
           <%= comment.message %>
             <small><%= comment.user.email %></small>
         </blockquote>
+        <% if current_user && current_user == @place.user %>
+          </br />
+              <%= link_to 'Delete comment', place_comment_path(@place, comment), class: 'delete-link', method: :delete, data: {confirm: 'Are you sure you want to delete this?'} %>
+              </br />
+            <% end %>
+
       </div>
     <% end %>
   </div>

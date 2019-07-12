@@ -41,7 +41,7 @@
   // Descriptions of all options available on the demo site:
   // http://lokeshdhakar.com/projects/lightbox2/index.html#options
   Lightbox.defaults = {
-    albumLabel: 'Image %1 of %2',
+    albumLabel: 'Photo %1 of %2',
     alwaysShowNavOnTouchDevices: false,
     fadeDuration: 600,
     fitImagesInViewport: true,
@@ -51,7 +51,7 @@
     positionFromTop: 50,
     resizeDuration: 700,
     showImageNumberLabel: true,
-    wrapAround: false,
+    wrapAround: true,
     disableScrolling: false,
     /*
     Sanitize Title

@@ -128,5 +128,18 @@ blockquote p {
 }
 
 .photo-thumb {
-  margin-bottom: 1.5rem;
+  margin-bottom: 1.51rem;
+}
+
+.delete-link {
+  color: #c0c0c0;
+}
+
+.delete-link:hover {
+  color: #4e1232;
+  text-decoration: none;
+}
+
+.card.no-border {
+  border: none;
 }

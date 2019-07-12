@@ -6,8 +6,16 @@ class CommentsController < ApplicationController
     @place = Place.find(params[:place_id])
     @comment = @place.comments.create(comment_params.merge(user: current_user)) 
     redirect_to place_path(@place)
+  end
 
-    
+  def destroy
+    @place = Place.find(params[:place_id])
+    @comment = Comment.find(params[:id])
+    if @place.user != current_user
+      return render plain: 'Not Allowed', status: :forbidden
+    end
+    @comment.delete
+    redirect_to place_path(@place)
   end
 
   private

@@ -7,6 +7,16 @@ before_action :authenticate_user!
     redirect_to place_path(@place)
   end
 
+  def destroy
+    @place = Place.find(params[:place_id])
+    @photo = Photo.find(params[:id])
+    if @place.user != current_user
+      return render plain: 'Not Allowed', status: :forbidden
+    end
+    @photo.delete
+    redirect_to place_path(@place)
+  end
+
   private
 
   def photo_params
