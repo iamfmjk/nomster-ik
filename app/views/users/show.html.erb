@@ -14,7 +14,7 @@
     <div class="clear"></div>
   </div>
 
-  <h1 class="text-center mb-3 mt-3">My Comments</h1>
+  <h2 class="text-center mb-3 mt-3">My Comments</h2>
   <div class="row">
     <% @user.comments.each do |comment| %>
       <div class="col-12 col-sm-6">
@@ -31,4 +31,55 @@
       </div>
     <% end %>
   </div>
+  <div class="clear"></div>
+
+  <h2 class="text-center mb-3 mt-3">My Places</h2>
+  <% @user.places.each do |place| %>
+    <div class="booyah-box col-10 offset-1">
+  <% if place.photos.present? %>
+  <div class="card no-border">
+    <div class="row">
+      <div class="col-md-4">
+        <%= image_tag(place.photos.first.picture.url(:thumb), class: 'img-fluid card-img') %>
+      </div>
+      <div class="col-md-8">
+        <div class="card-body">
+          <h1><%= link_to place.name, place_path(place) %></h1>
+          <i><%= place.address %></i><br /><br />
+          <p><%= place.description %></p><br />
+        </div>
+      </div>
+    </div>
+  </div>
+  <% else %>
+  <h1><%= link_to place.name, place_path(place) %></h1>
+          <i><%= place.address %></i><br /><br />
+          <p><%= place.description %></p><br />
+
+<% end %>
+  
+    
+
+    <% if place.user.present? %>
+    <div class="float-right">
+      <small>Added by: <%= place.user.email %></small>
+    </div>
+    <% end %>
+
+    <% if place.comments.present? %>
+    <div class="col-12">
+        <blockquote>
+          <% if place.comments.last.humanized_rating.present? %>
+              <b><%= place.comments.last.humanized_rating %></b>
+              <br />
+          <% end %>
+          <%= place.comments.last.message %>
+            <small><%= place.comments.last.user.email %></small>
+        </blockquote>
+      </div>
+      <% end %>
+  </div>
+
+  <% end %>
+
 </div>
