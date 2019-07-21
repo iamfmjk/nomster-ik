@@ -1,19 +1,18 @@
 @import "bootstrap";
 @import 'lightbox';
-@import url('https://fonts.googleapis.com/css?family=Open+Sans:400,600,700&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Open+Sans:400,700|Roboto+Slab&display=swap');
 @import "font-awesome";
 
 
 body {
   background: image_url('blizzard.png');
-  font-family: Cambria, "Hoefler Text", Utopia, "Liberation Serif", "Nimbus Roman No9 L Regular", Times, "Times New Roman", serif;
+  font-family: 'Open Sans', sans-serif;
 
 }
 
 .navbar {
   background-color: #4e1232;
   box-shadow: 0px 1px 1px #801747;
-  font-family: 'Open Sans', sans-serif;
   color: #f1e9ed;
 
 }
@@ -65,6 +64,7 @@ body {
 h1, h2, h3, h4, h5, h6 {
   margin: 0;
   padding: 0;
+  font-family: 'Roboto Slab', serif;
 }
 
 .page-link, h1 a {
@@ -142,4 +142,19 @@ blockquote p {
 
 .card.no-border {
   border: none;
+}
+
+.carousel-inner > .carousel-item > img, .carousel-inner > .carousel-item > a > img {
+  max-height: 550px;
+  object-fit: cover;
+}
+
+.carousel-caption {
+  text-shadow: rgba(0, 0, 0, 0.5) 1px 1px;
+  font-family: 'Helvetica Neue', Helvetica, sans-serif;
+  background-color: rgba(0, 0, 0, 0.3);
+  color: #f1e9ed;
+  position: absolute;
+  left: 0;
+  width: 100%;
 }
