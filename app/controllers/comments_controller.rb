@@ -11,7 +11,7 @@ class CommentsController < ApplicationController
   def destroy
     @place = Place.find(params[:place_id])
     @comment = Comment.find(params[:id])
-    if @place.user != current_user
+    if @comment.user != current_user
       return render plain: 'Not Allowed', status: :forbidden
     end
     @comment.delete
