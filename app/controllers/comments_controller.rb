@@ -11,6 +11,7 @@ class CommentsController < ApplicationController
       flash[:error] = "Your comment wasn't posted - please provide the rating"
     end
     redirect_to place_path(@place)
+
   end
 
   def destroy
