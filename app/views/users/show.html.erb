@@ -1,82 +1,90 @@
 <div class="col-10 offset-1">
   <div class="booyah-box">
-    <div class="row">
-      <div class="col-4">
-        <%= image_tag 'user.png' %>
-      </div>
-      <div class="col-8">
-        <h1><%= @user.email %></h1>
-        <h3>Member since: <%= @user.created_at.strftime("%B %d, %Y") %></h3>
-        <h4><%= @user.comments.count %> total comments</h4>
-        <h4><%= @user.comments.where(rating: '5_stars').count %> total 5 star reviews</h4>
+    <div class="card no-border mb-3">
+      <div class="row no-gutters">
+        <div class="col-md-4">
+          <%= image_tag 'user.png' %>
+        </div>
+        <div class="col-md-8">
+          <div class="card-body">
+            <h3 class="card-title"><%= @user.email %></h3>
+            <p class="card-text"><strong>Member since:</strong> <%= @user.created_at.strftime("%B %d, %Y") %></p>
+            <p class="card-text"><%= @user.comments.count %> total <strong>comments</strong></p>
+            <p class="card-text"><%= @user.comments.where(rating: '5_stars').count %> total <strong>5 star reviews</strong></p>
+          </div>
+        </div>
       </div>
     </div>
     <div class="clear"></div>
   </div>
 
   <h2 class="text-center mb-3 mt-3">My Comments</h2>
-  <div class="row">
-    <% @user.comments.each do |comment| %>
-      <div class="col-12 col-sm-6">
-        <h3><%= link_to comment.place.name, place_path(comment.place) %></h3>
-        <blockquote>
-          <% if comment.humanized_rating.present? %>
-              <b><%= comment.humanized_rating %></b>
-              <br />
-          <% end %>
-          <%= comment.message %>
-          <br/>
-            <small><%= comment.user.email %></small>
-        </blockquote>
-        <div class="delete-link mb-3 float-right">
-          <small>
-          <%= link_to 'Delete comment', place_comment_path(comment.place), method: :delete, data: {confirm: 'Are you sure you want to delete this?'} %>
-        </small>
+
+  <div class="booyah-box">
+    <div class="row">
+      <% @user.comments.each do |comment| %>
+        <div class="col-12 col-sm-6">
+          <h3><%= link_to comment.place.name, place_path(comment.place) %></h3>
+          <blockquote>
+            <% if comment.humanized_rating.present? %>
+                <b><%= comment.humanized_rating %></b>
+                <br />
+            <% end %>
+            <%= comment.message %>
+            <br/>
+              <small><%= comment.user.email %></small>
+          </blockquote>
+          <div class="delete-link mb-3 float-right">
+            <small>
+            <%= link_to 'Delete comment', place_comment_path(comment.place), method: :delete, data: {confirm: 'Are you sure you want to delete this?'} %>
+          </small>
+          </div>
         </div>
-      </div>
-    <% end %>
+      <% end %>
+    </div>
   </div>
   <div class="clear"></div>
 
   <h2 class="text-center mb-3 mt-3">My Places</h2>
-  <% @user.places.each do |place| %>
-  <div class="booyah-box col-10 offset-1">
-  <% if place.photos.present? %>
-    <div class="card no-border">
-      <div class="row">
-        <div class="col-md-4">
-          <%= image_tag(place.photos.first.picture.url(:thumb), class: 'img-fluid card-img') %>
-        </div>
-        <div class="col-md-8">
-          <div class="card-body">
-            <h1><%= link_to place.name, place_path(place) %></h1>
-            <i><%= place.address %></i><br /><br />
-            <p><%= place.description %></p><br />
+    <div class="col-12">
+    <% @user.places.each do |place| %>
+    <div class="booyah-box">
+    <% if place.photos.present? %>
+      <div class="card no-border">
+        <div class="row">
+          <div class="col-md-4">
+            <%= image_tag(place.photos.first.picture.url(:thumb), class: 'img-fluid card-img') %>
+          </div>
+          <div class="col-md-8">
+            <div class="card-body">
+              <h1><%= link_to place.name, place_path(place) %></h1>
+              <i><%= place.address %></i><br /><br />
+              <p><%= place.description %></p><br />
+            </div>
           </div>
         </div>
       </div>
-    </div>
-  <% else %>
-  <h1><%= link_to place.name, place_path(place) %></h1>
-  <i><%= place.address %></i><br /><br />
-  <p><%= place.description %></p>
-
-<% end %>
-
-    <% if place.comments.present? %>
-    <div class="col-12">
-        <blockquote>
-          <% if place.comments.last.humanized_rating.present? %>
-              <b><%= place.comments.last.humanized_rating %></b>
-              <br />
-          <% end %>
-          <%= place.comments.last.message %>
-            <small><%= place.comments.last.user.email %></small>
-        </blockquote>
-      </div>
-      <% end %>
-  </div>
+    <% else %>
+    <h1><%= link_to place.name, place_path(place) %></h1>
+    <i><%= place.address %></i><br /><br />
+    <p><%= place.description %></p>
 
   <% end %>
 
+      <% if place.comments.present? %>
+      <div class="col-12">
+          <blockquote>
+            <% if place.comments.last.humanized_rating.present? %>
+                <b><%= place.comments.last.humanized_rating %></b>
+                <br />
+            <% end %>
+            <%= place.comments.last.message %>
+              <small><%= place.comments.last.user.email %></small>
+          </blockquote>
+        </div>
+        <% end %>
+    </div>
+
+    <% end %>
+</div>
 </div>
