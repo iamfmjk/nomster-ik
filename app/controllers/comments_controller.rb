@@ -5,6 +5,11 @@ class CommentsController < ApplicationController
   def create
     @place = Place.find(params[:place_id])
     @comment = @place.comments.create(comment_params.merge(user: current_user)) 
+    if @comment.save
+      flash[:success] = "Your comment has been posted!"
+    else
+      flash[:error] = "Your comment wasn't posted - please provide the rating"
+    end
     redirect_to place_path(@place)
   end
 

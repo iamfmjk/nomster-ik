@@ -91,14 +91,25 @@
 <!-- Comments -->
 
 <div class="col-10 offset-1 booyah-box">
-  <h2 class="float-left">Comments</h2>
-
+  <h2 class="float-left mb-3">Comments</h2>
+  
   <!-- Button trigger modal -->
-  <button type="button" class="btn btn-primary float-right" data-toggle="modal" data-target="#commentsModal">
+  <button type="button" class="btn btn-primary float-right mb-3" data-toggle="modal" data-target="#commentsModal">
    Add a comment
   </button>
 
   <div class="clear"></div>
+  <% if flash[:error].present? %>
+    <div class="col-10 offset -1 alert alert-danger mt-3 mb-3">
+      <%= flash[:error].html_safe %>
+    </div>
+  <% end %>
+  <% if flash[:success].present? %>
+    <div class="col-10 offset -1 alert alert-success mt-3 mb-3">
+      <%= flash[:success].html_safe %>
+    </div>
+  <% end %>
+  
 
   <!-- Modal -->
   <div class="modal fade" id="commentsModal" tabindex="-1" role="dialog" aria-labelledby="commentsModalLabel" aria-hidden="true">
@@ -112,8 +123,10 @@
         </div>
         <div class="modal-body">
           <%= simple_form_for @comment, url: place_comments_path(@place) do |f| %>
+           
             <%= f.input :message %>
-            <%= f.input :rating, as: :select, collection: Comment::RATINGS %> 
+            <%= f.input :rating, as: :select, collection: Comment::RATINGS %>
+             
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -133,12 +146,16 @@
               <br />
           <% end %>
           <%= comment.message %>
+          <br />
             <small><%= comment.user.email %></small>
         </blockquote>
         <% if current_user && current_user == comment.user %>
-          </br />
-              <%= link_to 'Delete comment', place_comment_path(@place, comment), class: 'delete-link', method: :delete, data: {confirm: 'Are you sure you want to delete this?'} %>
-              </br />
+          <div class="delete-link mb-3 float-right">
+            <small>
+              <%= link_to 'Delete comment', place_comment_path(@place, comment), method: :delete, data: {confirm: 'Are you sure you want to delete this?'} %>
+            </small>
+          </div>
+              
             <% end %>
 
       </div>
