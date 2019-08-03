@@ -78,8 +78,11 @@
           <%= image_tag(photo.picture.url(:thumb), class: 'img-fluid') %>
             <% if current_user && current_user == @place.user %>
           </br />
+            <div class="delete-link">
+                <small>
               <%= link_to 'Delete photo', place_photo_path(@place, photo), class: 'delete-link', method: :delete, data: {confirm: 'Are you sure you want to delete this?'} %>
-              </br />
+              </small>
+            </div>
             <% end %>
           <% end %>
           <div class="clear"></div>
