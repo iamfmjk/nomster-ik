@@ -12,7 +12,7 @@
     <div class="carousel-item active">
       <%= image_tag 'nom001s.jpg', class: 'd-block w-100 img-fluid' %>
       <div class="carousel-caption">
-        
+
         <h3>Sweet Mapple</h3>
         <p>2101 Sutter St, San Francisco, CA 94115</p>
       </div>
@@ -68,34 +68,38 @@
 <% @places.each do |place| %>
   <div class="booyah-box col-10 offset-1">
   <% if place.photos.present? %>
-  <div class="card no-border">
-    <div class="row">
-      <div class="col-md-4">
-        <%= image_tag(place.photos.first.picture.url(:thumb), class: 'img-fluid card-img') %>
-      </div>
-      <div class="col-md-8">
-        <div class="card-body">
-          <h1><%= link_to place.name, place_path(place) %></h1>
-          <i><%= place.address %></i><br /><br />
-          <p><%= place.description %></p><br />
+    <div class="card no-border">
+      <div class="row">
+        <div class="col-md-4">
+          <%= image_tag(place.photos.first.picture.url(:thumb), class: 'img-fluid card-img') %>
+        </div>
+        <div class="col-md-8">
+          <div class="card-body">
+            <h1><%= link_to place.name, place_path(place) %></h1>
+            <i><%= place.address %></i><br /><br />
+            <p><%= place.description %></p><br />
+            <% if place.user.present? %>
+            <div>
+              <small>Added by: <%= place.user.email %></small>
+            </div>
+            <div class="clear"></div>
+          <% end %>
+          </div>
         </div>
       </div>
     </div>
-  </div>
   <% else %>
   <h1><%= link_to place.name, place_path(place) %></h1>
-          <i><%= place.address %></i><br /><br />
-          <p><%= place.description %></p><br />
-
-<% end %>
-  
-    
-
-    <% if place.user.present? %>
-    <div class="float-right">
+  <i><%= place.address %></i><br /><br />
+  <p><%= place.description %></p>
+  <% if place.user.present? %>
+    <div>
       <small>Added by: <%= place.user.email %></small>
     </div>
-    <% end %>
+    <div class="clear"></div>
+  <% end %>
+
+<% end %>
 
     <% if place.comments.present? %>
     <div class="col-12">
