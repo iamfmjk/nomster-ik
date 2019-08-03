@@ -74,6 +74,7 @@
         <%= link_to photo.picture.url, class: 'img-fluid', data: {lightbox: "photo-set", title: photo.caption} do %>
 
           <%= image_tag(photo.picture.url(:thumb), class: 'img-fluid') %>
+          <% end %>
             <% if current_user && current_user == @place.user %>
           </br />
             <div class="delete-link">
@@ -82,7 +83,6 @@
               </small>
             </div>
             <% end %>
-          <% end %>
           <div class="clear"></div>
         </div>
       <% end %>
