@@ -33,7 +33,7 @@
       <% if current_user && current_user == @place.user %>
         <%= link_to 'Delete', place_path(@place), method: :delete, data: {confirm: 'Are you sure you want to delete this?'}, class: 'btn btn-outline-secondary' %>
         <%= link_to 'Edit', edit_place_path(@place), class: 'btn btn-primary' %>
-        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#photosModal">Add a photo</button> 
+        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#photosModal">Add a photo</button>
       <% end %>
   </div>
   <br />
@@ -50,7 +50,7 @@
           </button>
         </div>
         <%= simple_form_for @photo, url: place_photos_path(@place) do |f| %>
-        <div class="modal-body">       
+        <div class="modal-body">
             <%= f.input :picture, as: :file %>
             <%= f.input :caption %>
         </div>
@@ -68,15 +68,15 @@
 <!-- Photos -->
   <h2>Photos</h2>
   <br />
-  <div class="row justify-content-center">    
+  <div class="row justify-content-center">
       <% @place.photos.each do |photo| %>
-        <div class="col-12 col-md-auto photo-thumb">      
+        <div class="col-12 col-md-auto photo-thumb">
         <%= link_to photo.picture.url, class: 'img-fluid', data: {lightbox: "photo-set", title: photo.caption} do %>
 
           <%= image_tag(photo.picture.url(:thumb), class: 'img-fluid') %>
           <% end %>
             <% if current_user && current_user == @place.user %>
-          </br />
+          <br />
             <div class="delete-link">
                 <small>
               <%= link_to 'Delete photo', place_photo_path(@place, photo),  method: :delete, data: {confirm: 'Are you sure you want to delete this?'} %>
@@ -93,7 +93,7 @@
 
 <div class="col-10 offset-1 booyah-box">
   <h2 class="float-left mb-3">Comments</h2>
-  
+
   <!-- Button trigger modal -->
   <button type="button" class="btn btn-primary float-right mb-3" data-toggle="modal" data-target="#commentsModal">
    Add a comment
@@ -110,7 +110,7 @@
       <%= flash[:success].html_safe %>
     </div>
   <% end %>
-  
+
 
   <!-- Modal -->
   <div class="modal fade" id="commentsModal" tabindex="-1" role="dialog" aria-labelledby="commentsModalLabel" aria-hidden="true">
@@ -121,13 +121,13 @@
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>
-        </div>        
+        </div>
         <%= simple_form_for @comment, url: place_comments_path(@place) do |f| %>
         <div class="modal-body">
           <%= f.input :message %>
           <%= f.input :rating, as: :select, collection: Comment::RATINGS %>
           </div>
-          <div class="modal-footer">  
+          <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
             <%= f.submit "Add a Comment", class: 'btn btn-primary' %>
           </div>
@@ -154,7 +154,7 @@
               <%= link_to 'Delete comment', place_comment_path(@place, comment), method: :delete, data: {confirm: 'Are you sure you want to delete this?'} %>
             </small>
           </div>
-              
+
             <% end %>
 
       </div>
@@ -163,4 +163,3 @@
   <br />
   <br />
 </div>
-

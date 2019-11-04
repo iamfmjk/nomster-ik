@@ -10,12 +10,12 @@
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
-  <body> 
+  <body>
     <nav class="navbar navbar-expand-lg">
       <%= link_to 'Nomster', root_path, class: 'navbar-brand' %>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
         <span>
-          <i class="fa fa-navicon menu-toggle"></i>
+          <i class="fa fa-bars fa-lg menu-toggle"></i>
         </span>
       </button>
       <div class="collapse navbar-collapse" id="navbarNav">
@@ -45,7 +45,7 @@
           <% end %>
         </ul>
       </div>
-  
+
     </nav>
 
     <% if notice.present? %>
